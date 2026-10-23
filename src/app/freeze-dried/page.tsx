@@ -151,40 +151,30 @@ export default function FreezeDriedPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-bold text-brand-ink md:text-3xl">
-              Quality & Preservation
-            </h2>
-            <p className="mt-4 text-brand-muted">
-              Our freeze-drying process ensures that the nutritional value, flavor, and texture of
-              the original ingredients are perfectly maintained.
-            </p>
-            <ul className="mt-6 space-y-3">
-              {[
-                { label: "Nutrition", text: "Retains 98% of the original nutrients." },
-                { label: "Flavor", text: "concentrates the natural sugars and aromas." },
-                { label: "Shelf Life", text: "Long-term stability without preservatives." },
-                { label: "100% Natural", text: "No added colors, flavors, or carriers." },
-              ].map((item) => (
-                <li key={item.label} className="flex items-start gap-3 text-brand-ink">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-accent" />
-                  <span>
-                    <strong>{item.label}:</strong>{" "}
-                    <span className="text-brand-muted">{item.text}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/abt.jpg"
-              alt="Freeze Drying"
-              className="w-full rounded-2xl object-cover shadow-sm"
-            />
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-bold text-brand-ink md:text-3xl">
+            Quality & Preservation
+          </h2>
+          <p className="mt-4 text-brand-muted">
+            Our freeze-drying process ensures that the nutritional value, flavor, and texture of
+            the original ingredients are perfectly maintained.
+          </p>
+          <ul className="mx-auto mt-6 max-w-2xl space-y-3 text-left">
+            {[
+              { label: "Nutrition", text: "Retains 98% of the original nutrients." },
+              { label: "Flavor", text: "concentrates the natural sugars and aromas." },
+              { label: "Shelf Life", text: "Long-term stability without preservatives." },
+              { label: "100% Natural", text: "No added colors, flavors, or carriers." },
+            ].map((item) => (
+              <li key={item.label} className="flex items-start gap-3 text-brand-ink">
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-accent" />
+                <span>
+                  <strong>{item.label}:</strong>{" "}
+                  <span className="text-brand-muted">{item.text}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

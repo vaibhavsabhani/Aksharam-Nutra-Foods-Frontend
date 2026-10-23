@@ -143,15 +143,7 @@ const extracts: ExtractRow[] = [
 export default function IndianHerbalExtractPage() {
   return (
     <>
-      <div
-        className="bg-brand py-20 text-center text-brand-foreground"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/abt.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div className="bg-brand py-16 text-center text-brand-foreground md:py-20">
         <div className="mx-auto max-w-3xl px-4">
           <h1 className="text-3xl font-bold md:text-4xl">Indian Herbal Extract</h1>
           <p className="mt-3 text-lg text-white/90">

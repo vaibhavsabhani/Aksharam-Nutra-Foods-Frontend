@@ -99,7 +99,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-2 border-t pt-6 text-sm text-brand-muted md:flex-row md:items-center md:justify-between">
           <p>Copyright &copy; {year}. All Rights Reserved. Aksharam Nutra Foods</p>
-          <p>Designed By Mandaliya Infotech</p>
+          <p>Designed By Aksharam Team</p>
         </div>
       </div>
     </footer>

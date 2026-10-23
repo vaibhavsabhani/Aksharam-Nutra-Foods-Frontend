@@ -55,8 +55,8 @@ export function TestimonialCarousel() {
         >
           <CarouselContent>
             {testimonials.map((t) => (
-              <CarouselItem key={t.id}>
-                <blockquote className="mx-auto min-h-40 max-w-4xl px-2 text-brand-muted md:px-8">
+              <CarouselItem key={t.id} className="flex min-h-40 items-center">
+                <blockquote className="mx-auto w-full max-w-4xl px-2 text-brand-muted md:px-8">
                   <p className="text-base leading-relaxed md:text-lg md:leading-relaxed">
                     ⭐ &ldquo;{t.quote}&rdquo;
                     <span className="whitespace-nowrap"> — {t.author}</span>
