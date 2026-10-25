@@ -326,6 +326,13 @@ function ApplicationSection({ section, index }: { section: ApplicationSectionDat
   );
 }
 
+const applicationSectionsInOrder = [
+  applicationSections[0],
+  applicationSections[2],
+  applicationSections[1],
+  ...applicationSections.slice(3),
+];
+
 export default function ApplicationPage() {
   return (
     <>
@@ -356,7 +363,7 @@ export default function ApplicationPage() {
           </div>
         </div>
       </section>
-      {applicationSections.map((section, index) => (
+      {applicationSectionsInOrder.map((section, index) => (
         <ApplicationSection key={section.title} section={section} index={index} />
       ))}
       <section className="bg-brand px-4 py-16 text-brand-foreground md:py-24">
