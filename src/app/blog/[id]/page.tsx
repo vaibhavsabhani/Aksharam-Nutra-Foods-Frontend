@@ -31,17 +31,17 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
     <>
       <HeroBanner title={post.title} />
       <article className="mx-auto max-w-3xl px-4 py-16">
-        <p className="text-sm text-brand-muted">
+        <div
+          className="prose max-w-none text-brand-muted"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+        <p className="mt-10 border-t border-border pt-5 text-sm text-brand-muted">
           by {post.author?.name ?? "Admin"} on {new Date(post.createdAt).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "2-digit",
           })}
         </p>
-        <div
-          className="prose mt-8 max-w-none text-brand-muted"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
       </article>
     </>
   );

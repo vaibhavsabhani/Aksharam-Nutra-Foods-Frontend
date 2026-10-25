@@ -8,12 +8,20 @@ export const metadata: Metadata = {
     "Explore versatile fruit, vegetable, dairy and herbal ingredients for food, beverage and nutrition applications.",
 };
 
+interface ApplicationDetailGroup {
+  title: string;
+  description: string;
+  applications: string[];
+  note: string;
+}
+
 interface ApplicationSectionData {
   title: string;
   subtitle: string;
   description: string;
   applications: string[];
   closing: string;
+  detailGroups?: ApplicationDetailGroup[];
 }
 
 const applicationSections: ApplicationSectionData[] = [
@@ -48,6 +56,139 @@ const applicationSections: ApplicationSectionData[] = [
     ],
     closing:
       "Our dairy ingredient category supports manufacturers in exploring suitable formulations for a variety of food processing and product development needs.",
+  },
+  {
+    title: "Spray-Dried Fat Powder",
+    subtitle: "Versatile Fat Ingredients for Innovative Food Applications",
+    description:
+      "Spray-dried fat powder is a versatile ingredient used in food manufacturing to incorporate fats and oils into powdered formulations. Produced by spray-drying a suitable fat or oil emulsion with appropriate carrier ingredients, it offers a convenient alternative to handling liquid fats in applications where powder-based ingredients are preferred. With its versatility, ease of blending and suitability for a variety of dry formulations, spray-dried fat powder supports product development across bakery, confectionery, dairy, beverages, snacks and convenience foods. Depending on its composition and functional characteristics, it can contribute to flavour, creaminess, mouthfeel, texture and the overall sensory profile of finished products. As food manufacturers continue to develop convenient, consistent and innovative products, spray-dried fat powder offers formulation flexibility for a wide range of industrial applications.",
+    applications: [],
+    detailGroups: [
+      {
+        title: "Bakery & Confectionery",
+        description:
+          "Spray-dried fat powder can be incorporated into selected bakery and confectionery formulations to contribute to richness, flavour and texture. Its powdered format makes it suitable for dry bakery premixes and other formulations where convenient ingredient handling and uniform blending are important.",
+        applications: [
+          "Cake mixes and bakery premixes",
+          "Biscuits, cookies and crackers",
+          "Muffin and pancake mixes",
+          "Waffle and doughnut premixes",
+          "Confectionery fillings and coatings",
+          "Chocolate-based preparations, where compatible with the formulation",
+          "Dessert powders and sweet bakery blends",
+        ],
+        note: "Suitability depends on melting behaviour, fat composition, carrier system and interaction with other ingredients.",
+      },
+      {
+        title: "Dairy Products & Frozen Desserts",
+        description:
+          "Fat plays an important role in the flavour, creaminess, body and mouthfeel of many dairy-based foods and frozen desserts. Suitable spray-dried fat powders can support the development of products with desirable sensory characteristics.",
+        applications: [
+          "Ice cream and frozen dessert mixes",
+          "Milk-based dessert powders",
+          "Dairy beverage preparations",
+          "Whipped topping mixes",
+          "Cream-style soup formulations",
+          "Custard and pudding powders",
+          "Selected dairy-based premixes",
+        ],
+        note: "Final performance depends on compatibility with the dairy system, emulsification requirements and finished-product processing conditions.",
+      },
+      {
+        title: "Beverages & Powdered Creamers",
+        description:
+          "Spray-dried fat powders can be used in selected beverage formulations where fat contributes to creaminess, flavour and mouthfeel. Their powdered format can simplify incorporation into instant beverage mixes and other dry preparations.",
+        applications: [
+          "Instant coffee and tea creamers",
+          "Coffee and cappuccino premixes",
+          "Instant chocolate drink powders",
+          "Malt-based beverage mixes",
+          "Powdered milkshake preparations",
+          "Speciality beverage blends",
+          "Selected plant-based beverage powders, where compatible",
+        ],
+        note: "Important considerations include wettability, dispersibility, overall formulation solubility and emulsion stability after reconstitution.",
+      },
+      {
+        title: "Soups, Sauces & Savoury Preparations",
+        description:
+          "In savoury food manufacturing, suitable spray-dried fat powders can contribute to flavour, richness and mouthfeel while offering the convenience of a dry ingredient format.",
+        applications: [
+          "Instant soup powders",
+          "Cream-style soup mixes",
+          "Sauce and gravy premixes",
+          "Instant noodle seasoning blends",
+          "Pasta sauce preparations",
+          "Savoury seasoning systems",
+          "Ready-to-cook meal mixes",
+          "Dry culinary preparations",
+        ],
+        note: "The choice of fat powder should reflect the desired flavour profile, heat exposure, dispersion characteristics and intended preparation method.",
+      },
+      {
+        title: "Snacks & Processed Foods",
+        description:
+          "Spray-dried fat powder offers opportunities for food manufacturers developing snack products and processed foods in which fat contributes to flavour delivery, richness and sensory appeal.",
+        applications: [
+          "Seasoned snack coatings",
+          "Savoury snack premixes",
+          "Flavoured popcorn seasonings",
+          "Crackers and savoury biscuits",
+          "Extruded snack formulations",
+          "Instant mashed potato mixes",
+          "Prepared food blends",
+          "Selected convenience food applications",
+        ],
+        note: "Powdered fat ingredients can support dry blending and help incorporate fat without directly handling liquid oil at that processing stage.",
+      },
+      {
+        title: "Instant Foods & Convenience Products",
+        description:
+          "The demand for convenient, easy-to-prepare foods has created opportunities for powdered ingredients that can be blended, packed and distributed in dry formulations.",
+        applications: [
+          "Instant meal mixes",
+          "Ready-to-cook food preparations",
+          "Instant pasta and noodle sauces",
+          "Dehydrated meal components",
+          "Powdered side-dish mixes",
+          "Instant rice and savoury preparations",
+          "Convenience food premixes",
+          "Dry food kits and meal bases",
+        ],
+        note: "Suitability depends on preparation method, moisture conditions, packaging requirements and desired sensory properties.",
+      },
+      {
+        title: "Nutritional & Specialised Food Formulations",
+        description:
+          "Certain spray-dried fat powders may be suitable for specialised nutritional food formulations where a powdered lipid ingredient is required.",
+        applications: [
+          "Selected nutritional powder blends",
+          "Powdered food supplements, where permitted",
+          "Specialised food formulations",
+          "High-energy food preparations",
+          "Nutritional beverage mixes",
+          "Customised food ingredient blends",
+        ],
+        note: "Selection must consider consumer group, nutritional composition, ingredient specifications and applicable regulatory requirements, including oxidation stability and microbiological quality.",
+      },
+      {
+        title: "Industrial Food Manufacturing & Custom Blends",
+        description:
+          "Beyond individual food categories, spray-dried fat powder can be incorporated into customised ingredient systems developed to meet specific processing and formulation requirements.",
+        applications: [
+          "Industrial bakery ingredient blends",
+          "Multi-component dry premixes",
+          "Customised seasoning and flavour systems",
+          "Food-service ingredient preparations",
+          "Powdered bases for sauces and desserts",
+          "Specialised food processing blends",
+          "Contract formulation and product development",
+        ],
+        note: "Fat content, carrier selection, particle characteristics, bulk density, storage stability and processing compatibility should be evaluated before selection.",
+      },
+    ],
+    closing:
+      "Spray-dried fat powder provides food manufacturers with a flexible ingredient option for developing products across a diverse range of food categories. At Aksharam Nutra Foods, we understand that selecting the right ingredient involves consideration of formulation objectives, technical specifications, processing conditions and end-consumer expectations.",
   },
   {
     title: "Dehydrated Fruits & Vegetables",
@@ -125,21 +266,56 @@ function ApplicationSection({ section, index }: { section: ApplicationSectionDat
             <h3 className="text-xl font-bold text-brand-ink">Applications</h3>
             <span className="h-px flex-1 bg-border" />
           </div>
-          <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {section.applications.map((application) => {
-              const [label, detail] = application.split(": ");
-
-              return (
-                <li
-                  key={application}
-                  className="rounded-md border border-border/70 border-t-2 border-t-brand-accent bg-white px-5 py-4 text-sm leading-7 text-brand-muted shadow-sm"
+          {section.detailGroups ? (
+            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+              {section.detailGroups.map((group, groupIndex) => (
+                <article
+                  key={group.title}
+                  className="rounded-md border border-border/70 border-t-2 border-t-brand-accent bg-white px-5 py-5 shadow-sm"
                 >
-                  <strong className="font-semibold text-brand-ink">{label}:</strong>{" "}
-                  {detail}
-                </li>
-              );
-            })}
-          </ul>
+                  <div className="flex gap-3">
+                    <span className="text-sm font-bold text-brand-accent">
+                      {String(groupIndex + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h4 className="font-bold text-brand-ink">{group.title}</h4>
+                      <p className="mt-2 text-sm leading-6 text-brand-muted">{group.description}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-brand">
+                    Applications include
+                  </p>
+                  <ul className="mt-2 space-y-1 text-sm leading-6 text-brand-muted">
+                    {group.applications.map((application) => (
+                      <li key={application} className="flex gap-2">
+                        <span className="text-brand-accent">•</span>
+                        <span>{application}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 border-t border-border/70 pt-3 text-xs leading-5 text-brand-muted">
+                    {group.note}
+                  </p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {section.applications.map((application) => {
+                const [label, detail] = application.split(": ");
+
+                return (
+                  <li
+                    key={application}
+                    className="rounded-md border border-border/70 border-t-2 border-t-brand-accent bg-white px-5 py-4 text-sm leading-7 text-brand-muted shadow-sm"
+                  >
+                    <strong className="font-semibold text-brand-ink">{label}:</strong>{" "}
+                    {detail}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           <div className="mt-8 border-l-4 border-brand-accent bg-brand/5 px-5 py-5 md:px-6">
             <p className="text-sm leading-7 text-brand-muted md:text-base">{section.closing}</p>
           </div>
