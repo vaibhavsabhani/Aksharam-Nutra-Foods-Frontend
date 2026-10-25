@@ -20,7 +20,7 @@ const brochures: Brochure[] = [
   {
     title: "Spray Dried Products",
     description: "Complete range of Fruit, Vegetable & Fat powders.",
-    href: "/ANFPL-Product-List.pdf",
+    href: "/images/01.ANFPL Spray Dried Product Kist.pdf",
   },
   {
     title: "Dehydrated Products",

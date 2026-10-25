@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Aksharam Nutra Foods" className="h-20 w-auto" />
+            <img src="/images/logo.png" alt="Aksharam Nutra Foods" className="h-20 w-auto" />
             <p className="mt-4 text-sm text-brand-muted">
               Aksharam Nutra Foods Pvt Ltd is a leading manufacturer and supplier of spray dried
               fruit, vegetables, and fat powder products. Based in Surendranagar, Gujarat, our

@@ -73,7 +73,7 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Aksharam Nutra Foods" className="h-20 w-auto" />
+          <img src="/images/logo.png" alt="Aksharam Nutra Foods" className="h-20 w-auto" />
         </Link>
 
         {/* Desktop nav */}
