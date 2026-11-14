@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import type { PublicBlogPost } from "@/lib/blogs";
-
-const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001/api";
+import type { PublicBlogPost } from "@/types";
+import { API_URL } from "@/lib/api";
+import { BlogCard } from "./BlogCard";
 
 export function PublicBlogList() {
   const [posts, setPosts] = useState<PublicBlogPost[]>([]);
@@ -16,7 +15,7 @@ export function PublicBlogList() {
 
     async function loadBlogs() {
       try {
-        const response = await fetch(`${apiUrl}/blogs?onlyVisible=true`, {
+        const response = await fetch(`${API_URL}/blogs?onlyVisible=true`, {
           cache: "no-store",
         });
 
@@ -61,31 +60,7 @@ export function PublicBlogList() {
   return (
     <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
       {posts.map((post) => (
-        <article key={post.id}>
-          <Link
-            href={`/blog/${post.id}`}
-            className="block overflow-hidden rounded-xl border bg-white"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={post.coverImageUrl ?? "/images/blog-5.webp"}
-              alt={post.title}
-              className="h-48 w-full object-cover"
-            />
-          </Link>
-          <h3 className="mt-4 font-semibold text-brand-ink">
-            <Link href={`/blog/${post.id}`} className="hover:text-brand">
-              {post.title}
-            </Link>
-          </h3>
-          <div className="mt-2 text-sm text-brand-muted">
-            by {post.author?.name ?? "Admin"} on {new Date(post.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "2-digit",
-            })}
-          </div>
-        </article>
+        <BlogCard key={post.id} post={post} />
       ))}
     </div>
   );

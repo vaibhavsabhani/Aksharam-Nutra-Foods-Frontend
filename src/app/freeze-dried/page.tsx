@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Carrot, Sprout, Citrus, Flower2, FlaskConical } from "lucide-react";
 import { HeroBanner } from "@/components/sections/HeroBanner";
+import { FeatureBulletList } from "@/components/common/FeatureBulletList";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "Freeze Dried Products",
-  description: "",
 };
 
 interface FdCard {
@@ -72,25 +72,25 @@ function specBadgeClasses(variant?: "default" | "powder" | "herb") {
 
 function FreezeDriedGrid({ items }: { items: FdCard[] }) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-3 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 xl:gap-8">
       {items.map((item) => (
         <Card
           key={item.title}
-          className="items-center gap-3 p-6 text-center transition hover:-translate-y-1 hover:shadow-lg"
+          className="items-center gap-2.5 sm:gap-3 p-4 sm:p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-lg shadow-xs"
         >
           {item.image ? (
-            <div className="flex h-40 w-full items-center justify-center overflow-hidden rounded-lg bg-brand-bg p-3">
+            <div className="flex h-36 sm:h-40 w-full items-center justify-center overflow-hidden rounded-lg bg-brand-bg p-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={item.image} alt={item.title} className="max-h-full max-w-full object-contain" />
+              <img src={item.image} alt={item.title} className="max-h-full max-w-full object-contain transition duration-300 hover:scale-105" />
             </div>
           ) : item.icon ? (
-            <div className="flex h-40 w-full items-center justify-center">
-              <item.icon className={`size-12 ${item.iconClassName ?? "text-brand"}`} />
+            <div className="flex h-36 sm:h-40 w-full items-center justify-center">
+              <item.icon className={`size-10 sm:size-12 ${item.iconClassName ?? "text-brand"}`} />
             </div>
           ) : null}
-          <h3 className="text-base font-bold text-brand-ink">{item.title}</h3>
+          <h3 className="text-sm sm:text-base font-bold text-brand-ink">{item.title}</h3>
           {item.description ? (
-            <p className="text-sm text-brand-muted">{item.description}</p>
+            <p className="text-xs sm:text-sm text-brand-muted">{item.description}</p>
           ) : null}
           <Badge variant="outline" className={specBadgeClasses(item.specVariant)}>
             {item.spec}
@@ -109,72 +109,65 @@ export default function FreezeDriedPage() {
         subtitle="Industrial Grade. Nature Preserved. Perfectly Captured."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mx-auto mb-8 max-w-2xl text-center">
-          <h2 className="text-2xl font-bold text-brand-ink md:text-3xl">
+      <section className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-16 2xl:py-24">
+        <div className="mx-auto mb-8 sm:mb-12 max-w-2xl text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">
             Premium Freeze Dried Collection
           </h2>
         </div>
 
-        <h4 className="mb-6 inline-block border-b-2 border-brand pb-2 text-sm font-extrabold uppercase tracking-wide text-brand">
+        <h4 className="mb-4 sm:mb-6 inline-block border-b-2 border-brand pb-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-brand">
           Freeze Dried Fruits
         </h4>
         <FreezeDriedGrid items={fruits} />
 
-        <h4 className="mt-14 mb-6 inline-block border-b-2 border-brand pb-2 text-sm font-extrabold uppercase tracking-wide text-brand">
+        <h4 className="mt-10 sm:mt-14 mb-4 sm:mb-6 inline-block border-b-2 border-brand pb-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-brand">
           Freeze Dried Vegetables
         </h4>
         <FreezeDriedGrid items={vegetables} />
 
-        <h4 className="mt-14 mb-6 inline-block border-b-2 border-brand pb-2 text-sm font-extrabold uppercase tracking-wide text-brand">
+        <h4 className="mt-10 sm:mt-14 mb-4 sm:mb-6 inline-block border-b-2 border-brand pb-2 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-brand">
           Specialty Powders
         </h4>
         <FreezeDriedGrid items={specialty} />
       </section>
 
-      <section className="bg-brand-bg py-16">
-        <div className="mx-auto max-w-6xl px-4 text-center">
-          <h2 className="mb-8 text-2xl font-bold text-brand-ink">Industrial Grade Standards</h2>
-          <div className="grid gap-6 sm:grid-cols-3">
+      <section className="bg-brand-bg py-10 sm:py-16 2xl:py-20">
+        <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="mb-6 sm:mb-10 text-2xl sm:text-3xl md:text-4xl font-bold text-brand-ink tracking-tight">Industrial Grade Standards</h2>
+          <div className="grid gap-4 sm:gap-6 sm:grid-cols-3 xl:gap-8">
             {[
               { title: "98% Nutrient Retention", description: "Capturing nature's essence flawlessly." },
               { title: "Zero Additives", description: "100% Pure fruit and vegetable matter." },
               { title: "Global Export Certified", description: "Meeting international food safety norms." },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl bg-white p-6 shadow-sm">
-                <h5 className="font-bold text-brand-ink">{item.title}</h5>
-                <p className="mt-1 text-sm text-brand-muted">{item.description}</p>
+              <div key={item.title} className="rounded-xl bg-white p-5 sm:p-6 shadow-xs">
+                <h5 className="text-base sm:text-lg font-bold text-brand-ink">{item.title}</h5>
+                <p className="mt-1.5 text-xs sm:text-sm text-brand-muted leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-16 2xl:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-bold text-brand-ink md:text-3xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">
             Quality & Preservation
           </h2>
-          <p className="mt-4 text-brand-muted">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-brand-muted leading-relaxed">
             Our freeze-drying process ensures that the nutritional value, flavor, and texture of
             the original ingredients are perfectly maintained.
           </p>
-          <ul className="mx-auto mt-6 max-w-2xl space-y-3 text-left">
-            {[
+          <FeatureBulletList
+            className="mx-auto mt-6 max-w-2xl text-left"
+            items={[
               { label: "Nutrition", text: "Retains 98% of the original nutrients." },
               { label: "Flavor", text: "concentrates the natural sugars and aromas." },
               { label: "Shelf Life", text: "Long-term stability without preservatives." },
               { label: "100% Natural", text: "No added colors, flavors, or carriers." },
-            ].map((item) => (
-              <li key={item.label} className="flex items-start gap-3 text-brand-ink">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-accent" />
-                <span>
-                  <strong>{item.label}:</strong>{" "}
-                  <span className="text-brand-muted">{item.text}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+            ]}
+          />
         </div>
       </section>
     </>

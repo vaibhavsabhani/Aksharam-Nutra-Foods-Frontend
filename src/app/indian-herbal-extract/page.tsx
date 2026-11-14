@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
+import { HeroBanner } from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "Indian Herbal Extract",
-  description: "Indian Herbal Extract - Aksharam Nutra Foods Pvt. Ltd.",
-  keywords: "Herbal Extract, Indian Herbs, Aksharam Nutra",
 };
 
 interface ExtractRow {
@@ -143,29 +142,25 @@ const extracts: ExtractRow[] = [
 export default function IndianHerbalExtractPage() {
   return (
     <>
-      <div className="bg-brand py-16 text-center text-brand-foreground md:py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <h1 className="text-3xl font-bold md:text-4xl">Indian Herbal Extract</h1>
-          <p className="mt-3 text-lg text-white/90">
-            Premium quality extracts sourced from the finest Indian herbs.
-          </p>
-        </div>
-      </div>
+      <HeroBanner
+        title="Indian Herbal Extract"
+        subtitle="Premium quality extracts sourced from the finest Indian herbs."
+      />
 
-      <section className="bg-brand-bg py-12">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="overflow-hidden rounded-xl bg-white p-2 shadow-sm sm:p-5">
+      <section className="bg-brand-bg py-10 sm:py-16 2xl:py-24">
+        <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-2xl bg-white p-2 sm:p-6 shadow-sm border border-border/70">
             <div className="overflow-x-auto">
-              <table className="w-full border-separate border-spacing-0 text-sm">
-                <thead className="bg-brand-accent text-white">
+              <table className="w-full border-separate border-spacing-0 text-xs sm:text-sm">
+                <thead className="bg-brand text-white">
                   <tr>
-                    <th className="w-20 border border-brand-accent/70 px-3 py-3 text-center font-bold uppercase">
+                    <th className="w-16 sm:w-20 border-b border-brand/80 px-2 sm:px-3 py-3 text-center font-bold uppercase tracking-wider">
                       Sr. No.
                     </th>
-                    <th className="border border-brand-accent/70 px-4 py-3 text-left font-bold uppercase">
+                    <th className="border-b border-brand/80 px-3 sm:px-4 py-3 text-left font-bold uppercase tracking-wider">
                       Common Names
                     </th>
-                    <th className="border border-brand-accent/70 px-4 py-3 text-left font-bold uppercase">
+                    <th className="border-b border-brand/80 px-3 sm:px-4 py-3 text-left font-bold uppercase tracking-wider">
                       Specification
                     </th>
                   </tr>
@@ -174,16 +169,18 @@ export default function IndianHerbalExtractPage() {
                   {extracts.map((row, i) => (
                     <tr
                       key={row.sr}
-                      className={i % 2 === 0 ? "bg-white" : "bg-brand-bg/40"}
+                      className={`transition-colors hover:bg-brand/5 ${
+                        i % 2 === 0 ? "bg-white" : "bg-brand-bg/40"
+                      }`}
                     >
-                      <td className="border border-brand-bg px-3 py-2 text-center font-semibold text-brand-ink">
+                      <td className="border-b border-border/50 px-2 sm:px-3 py-2.5 text-center font-semibold text-brand-ink">
                         {row.sr}
                       </td>
-                      <td className="border border-brand-bg px-4 py-2 text-brand-ink">
+                      <td className="border-b border-border/50 px-3 sm:px-4 py-2.5 font-medium text-brand-ink">
                         {row.name}
                       </td>
-                      <td className="border border-brand-bg px-4 py-2 text-brand-muted">
-                        {row.spec}
+                      <td className="border-b border-border/50 px-3 sm:px-4 py-2.5 text-brand-muted">
+                        {row.spec || "—"}
                       </td>
                     </tr>
                   ))}

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { HeroBanner } from "@/components/sections/HeroBanner";
-import { ProductIntro } from "@/components/sections/ProductIntro";
-import { ExtraContentBlock } from "@/components/sections/ExtraContentBlock";
+import { HeroBanner, ProductIntro, ExtraContentBlock } from "@/components/sections";
+import { FeatureBulletList } from "@/components/common/FeatureBulletList";
 
 export const metadata: Metadata = {
   title: "Dehydrated Products",
-  description: "",
 };
 
 interface DehydratedSectionProps {
@@ -28,32 +26,25 @@ function DehydratedSection({
   reverseImage,
 }: DehydratedSectionProps) {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12">
-      <div className="grid items-center gap-10 md:grid-cols-2">
-        <div className={reverseImage ? "md:order-2" : "md:order-1"}>
+    <section className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16 2xl:py-20">
+      <div className="grid items-center gap-8 sm:gap-10 md:grid-cols-2 lg:gap-14 2xl:gap-20">
+        <div className={`flex justify-center ${reverseImage ? "md:order-2" : "md:order-1"}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image}
             alt={imageAlt}
-            className="w-full rounded-2xl object-cover shadow-sm"
+            className="w-full max-h-[350px] sm:max-h-[450px] 2xl:max-h-[600px] rounded-2xl object-cover shadow-sm"
           />
         </div>
         <div className={reverseImage ? "md:order-1" : "md:order-2"}>
           {eyebrow ? (
-            <span className="mb-2 block text-sm font-bold uppercase tracking-wide text-brand">
+            <span className="mb-2 block text-xs sm:text-sm font-bold uppercase tracking-wider text-brand">
               {eyebrow}
             </span>
           ) : null}
-          <h2 className="text-2xl font-bold text-brand-ink md:text-3xl">{title}</h2>
-          {paragraph ? <p className="mt-4 text-brand-muted">{paragraph}</p> : null}
-          <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
-            {items.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-brand-ink">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-accent" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">{title}</h2>
+          {paragraph ? <p className="mt-3 sm:mt-4 text-sm sm:text-base 2xl:text-lg leading-relaxed text-brand-muted">{paragraph}</p> : null}
+          <FeatureBulletList items={items} columns={2} className="mt-5 sm:mt-6" />
         </div>
       </div>
     </section>
@@ -131,42 +122,42 @@ export default function DehydratedProductsPage() {
       />
 
       {/* Premium Spices & Herbs */}
-      <section className="bg-white py-16 shadow-sm">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-brand-ink md:text-3xl">
+      <section className="bg-white py-10 sm:py-16 2xl:py-20 shadow-xs border-y border-border/60">
+        <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 sm:mb-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">
               Premium Spices & Herbs
             </h2>
-            <p className="mt-2 text-brand-muted">
+            <p className="mt-2 text-sm sm:text-base md:text-lg text-brand-muted">
               Available in Whole and Powder forms, harvested at the peak of freshness.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-4">
             {spicesThumbnails.map((item) => (
-              <div key={item.title} className="text-center">
+              <div key={item.title} className="text-center group">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="mx-auto h-[150px] w-[150px] rounded-full border-4 border-white object-cover shadow-sm"
+                  className="mx-auto size-24 sm:size-32 md:size-36 lg:size-40 rounded-full border-2 sm:border-4 border-white object-cover shadow-sm transition duration-300 group-hover:scale-105"
                 />
-                <h3 className="mt-3 text-sm font-bold text-brand-ink">{item.title}</h3>
+                <h3 className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base font-bold text-brand-ink">{item.title}</h3>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 rounded-2xl border bg-brand-bg p-8 shadow-sm md:p-10">
-            <div className="grid gap-8 sm:grid-cols-3">
+          <div className="mt-8 sm:mt-12 rounded-2xl border bg-brand-bg p-4 sm:p-8 md:p-10 shadow-xs">
+            <div className="grid gap-6 sm:gap-8 sm:grid-cols-3">
               {spicesPanels.map((panel) => (
                 <div key={panel.heading}>
-                  <h4 className="mb-3 text-sm font-bold uppercase tracking-wide text-brand">
+                  <h4 className="mb-2.5 sm:mb-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-brand">
                     {panel.heading}
                   </h4>
-                  <ul className="space-y-2 text-sm">
+                  <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm leading-relaxed">
                     {panel.items.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-brand-ink">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand-accent" />
                         <span>{item}</span>
                       </li>
                     ))}

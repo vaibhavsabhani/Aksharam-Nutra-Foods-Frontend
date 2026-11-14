@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { HeroBanner } from "@/components/sections/HeroBanner";
-import { ProductIntro } from "@/components/sections/ProductIntro";
-import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { ExtraContentBlock } from "@/components/sections/ExtraContentBlock";
-import { CoreValuesCounters } from "@/components/sections/CoreValuesCounters";
+import {
+  HeroBanner,
+  ProductIntro,
+  WhyChooseUs,
+  ExtraContentBlock,
+  CoreValuesCounters,
+} from "@/components/sections";
 import { companyIntro, coreValuesLarge } from "@/data/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "",
 };
 
 export default function AboutPage() {
   return (
     <>
-      <HeroBanner title="About Us" />
+      <HeroBanner title="About Us" subtitle="Pioneers in high-quality spray dried and natural food ingredients." />
 
       <ProductIntro
         title="Welcome to Aksharam Nutra Foods"

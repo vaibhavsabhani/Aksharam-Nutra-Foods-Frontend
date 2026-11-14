@@ -24,12 +24,12 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-14">
-        <div className="grid gap-10 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-14 2xl:py-20">
+        <div className="grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1.2fr_1.3fr] 2xl:gap-16">
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.png" alt="Aksharam Nutra Foods" className="h-20 w-auto" />
-            <p className="mt-4 text-sm text-brand-muted">
+            <img src="/images/logo.png" alt="Aksharam Nutra Foods" className="h-14 sm:h-16 md:h-20 w-auto object-contain" />
+            <p className="mt-4 text-xs sm:text-sm 2xl:text-base leading-relaxed text-brand-muted">
               Aksharam Nutra Foods Pvt Ltd is a leading manufacturer and supplier of spray dried
               fruit, vegetables, and fat powder products. Based in Surendranagar, Gujarat, our
               company is dedicated to providing premium-quality ingredients for various
@@ -39,57 +39,61 @@ export function Footer() {
               <a
                 href="https://www.instagram.com/aksharamnutrafoods"
                 aria-label="Instagram"
-                className="text-brand-muted hover:text-brand"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-muted transition hover:text-brand"
               >
                 <InstagramIcon className="size-5" />
               </a>
               <a
                 href="https://www.linkedin.com/company/aksharam-nutra-foods-pvt-ltd/"
                 aria-label="LinkedIn"
-                className="text-brand-muted hover:text-brand"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-muted transition hover:text-brand"
               >
                 <LinkedinIcon className="size-5" />
               </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <h3 className="mb-3 text-sm font-semibold text-brand-ink">Company</h3>
-              <ul className="space-y-2 text-sm text-brand-muted">
-                <li><Link href="/" className="hover:text-brand">Home</Link></li>
-                <li><Link href="/about" className="hover:text-brand">About Us</Link></li>
-                <li><Link href="/blog" className="hover:text-brand">Blog</Link></li>
-                <li><Link href="/contact" className="hover:text-brand">Contact us</Link></li>
+              <h3 className="mb-3 text-sm font-semibold text-brand-ink uppercase tracking-wide">Company</h3>
+              <ul className="space-y-2 text-xs sm:text-sm text-brand-muted">
+                <li><Link href="/" className="transition hover:text-brand">Home</Link></li>
+                <li><Link href="/about" className="transition hover:text-brand">About Us</Link></li>
+                <li><Link href="/blog" className="transition hover:text-brand">Blog</Link></li>
+                <li><Link href="/contact" className="transition hover:text-brand">Contact us</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="mb-3 text-sm font-semibold text-brand-ink">Products</h3>
-              <ul className="space-y-2 text-sm text-brand-muted">
-                <li><Link href="/spray-dried" className="hover:text-brand">Spray Dried</Link></li>
-                <li><Link href="/dehydrated-products" className="hover:text-brand">Dehydrated</Link></li>
-                <li><Link href="/freeze-dried" className="hover:text-brand">Freeze Dried</Link></li>
-                <li><Link href="/smoothies" className="hover:text-brand">Smoothies</Link></li>
-                <li><Link href="/indian-herbal-extract" className="hover:text-brand">Indian Herbal Extract</Link></li>
+              <h3 className="mb-3 text-sm font-semibold text-brand-ink uppercase tracking-wide">Products</h3>
+              <ul className="space-y-2 text-xs sm:text-sm text-brand-muted">
+                <li><Link href="/spray-dried" className="transition hover:text-brand">Spray Dried</Link></li>
+                <li><Link href="/dehydrated-products" className="transition hover:text-brand">Dehydrated</Link></li>
+                <li><Link href="/freeze-dried" className="transition hover:text-brand">Freeze Dried</Link></li>
+                <li><Link href="/smoothies" className="transition hover:text-brand">Smoothies</Link></li>
+                <li><Link href="/indian-herbal-extract" className="transition hover:text-brand">Indian Herbal Extract</Link></li>
               </ul>
             </div>
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-brand-ink">Contact</h3>
-            <ul className="space-y-3 text-sm text-brand-muted">
-              <li>
-                <strong className="text-brand-ink">Address</strong> {companyAddress}
+            <h3 className="mb-3 text-sm font-semibold text-brand-ink uppercase tracking-wide">Contact</h3>
+            <ul className="space-y-3 text-xs sm:text-sm text-brand-muted">
+              <li className="leading-relaxed">
+                <strong className="text-brand-ink block sm:inline">Address:</strong> {companyAddress}
               </li>
               <li>
-                <strong className="text-brand-ink">Email</strong>{" "}
-                <a href={`mailto:${companyEmail}`} className="hover:text-brand">
+                <strong className="text-brand-ink">Email:</strong>{" "}
+                <a href={`mailto:${companyEmail}`} className="break-all sm:break-normal transition hover:text-brand">
                   {companyEmail}
                 </a>
               </li>
               <li>
-                <strong className="text-brand-ink">Phone No.</strong>{" "}
-                <a href={`tel:${companyPhoneRaw}`} className="hover:text-brand">
+                <strong className="text-brand-ink">Phone:</strong>{" "}
+                <a href={`tel:${companyPhoneRaw}`} className="transition hover:text-brand">
                   {companyPhone}
                 </a>
               </li>
@@ -97,9 +101,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t pt-6 text-sm text-brand-muted md:flex-row md:items-center md:justify-between">
-          <p>Copyright &copy; {year}. All Rights Reserved. Aksharam Nutra Foods</p>
-          <p>Designed By Aksharam Team</p>
+        <div className="mt-10 flex flex-col gap-2 border-t pt-6 text-xs sm:text-sm text-brand-muted md:flex-row md:items-center md:justify-between">
+          <p>Copyright &copy; {year} Aksharam Nutra Foods. All Rights Reserved.</p>
+          <p>Ingredients That Inspire Innovation.</p>
         </div>
       </div>
     </footer>

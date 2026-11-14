@@ -135,11 +135,20 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply font-sans scroll-smooth;
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  html {
-    @apply font-sans;
+  img, svg, video, canvas {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -159,4 +168,112 @@
 .nav-submenu-item:focus-within > .nav-submenu-flyout {
   visibility: visible;
   opacity: 1;
+}
+
+/* Jaw-dropping custom keyframe animations & utilities */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.5deg);
+  }
+}
+
+@keyframes float-gentle-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-0.5deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+    box-shadow: 0 0 0 0 rgba(150, 200, 65, 0.6);
+  }
+  70% {
+    transform: scale(1.15);
+    opacity: 0.2;
+    box-shadow: 0 0 0 24px rgba(150, 200, 65, 0);
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+    box-shadow: 0 0 0 32px rgba(150, 200, 65, 0);
+  }
+}
+
+@keyframes ripple-burst {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer-slide {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@keyframes aura-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -25px) scale(1.08);
+  }
+  66% {
+    transform: translate(-25px, 20px) scale(0.95);
+  }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-gentle-delayed 6s ease-in-out infinite 2s;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.animate-ripple-burst {
+  animation: ripple-burst 2.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide 2.8s infinite;
+}
+
+.animate-aura-drift {
+  animation: aura-drift 12s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-gentle,
+  .animate-float-delayed,
+  .animate-pulse-ring,
+  .animate-ripple-burst,
+  .animate-shimmer-slide,
+  .animate-aura-drift {
+    animation: none !important;
+  }
 }
