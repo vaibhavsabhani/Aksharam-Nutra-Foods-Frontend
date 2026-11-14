@@ -1,15 +1,12 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { ContactFormValues } from "@/types";
+import { API_URL } from "@/lib/api";
 
-export interface ContactFormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-  message: string;
-}
+export type { ContactFormValues };
 
-type SubmitStatus = "idle" | "loading" | "succeeded" | "failed";
+export type SubmitStatus = "idle" | "loading" | "succeeded" | "failed";
 
-interface ContactFormState {
+export interface ContactFormState {
   values: ContactFormValues;
   status: SubmitStatus;
   error: string | null;
@@ -34,21 +31,31 @@ export const submitContactForm = createAsyncThunk<
   { rejectValue: string }
 >("contactForm/submit", async (values, { rejectWithValue }) => {
   try {
-    const res = await fetch("/api/contact", {
+    const response = await fetch(`${API_URL}/contacts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
+      body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        message: values.message,
+      }),
     });
 
-    const data = await res.json();
+    const data = await response.json();
 
-    if (!res.ok) {
-      return rejectWithValue(data?.error ?? "Something went wrong. Please try again.");
+    if (!response.ok) {
+      const errorMessage = Array.isArray(data?.message)
+        ? data.message.join(", ")
+        : (data?.message || data?.error || "Failed to send message");
+      return rejectWithValue(errorMessage);
     }
 
     return data;
-  } catch {
-    return rejectWithValue("Network error. Please try again.");
+  } catch (err: unknown) {
+    const message =
+      err instanceof Error ? err.message : "Something went wrong. Please try again.";
+    return rejectWithValue(message);
   }
 });
 
@@ -58,14 +65,27 @@ const contactFormSlice = createSlice({
   reducers: {
     setField(
       state,
-      action: { payload: { field: keyof ContactFormValues; value: string } }
+      action: PayloadAction<{ field: keyof ContactFormValues; value: string }>
     ) {
       state.values[action.payload.field] = action.payload.value;
+      if (state.status === "failed") {
+        state.error = null;
+        state.status = "idle";
+      }
+      if (state.status === "succeeded") {
+        state.status = "idle";
+      }
     },
     resetForm(state) {
       state.values = initialValues;
       state.status = "idle";
       state.error = null;
+    },
+    setError(state, action: PayloadAction<string | null>) {
+      state.error = action.payload;
+      if (action.payload) {
+        state.status = "failed";
+      }
     },
   },
   extraReducers: (builder) => {
@@ -77,6 +97,7 @@ const contactFormSlice = createSlice({
       .addCase(submitContactForm.fulfilled, (state) => {
         state.status = "succeeded";
         state.values = initialValues;
+        state.error = null;
       })
       .addCase(submitContactForm.rejected, (state, action) => {
         state.status = "failed";
@@ -85,5 +106,5 @@ const contactFormSlice = createSlice({
   },
 });
 
-export const { setField, resetForm } = contactFormSlice.actions;
+export const { setField, resetForm, setError } = contactFormSlice.actions;
 export default contactFormSlice.reducer;
