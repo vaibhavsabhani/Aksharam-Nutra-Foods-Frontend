@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { HeroBanner } from "@/components/sections";
-
-export const metadata: Metadata = {
-  title: "Application",
-};
+import { KineticText } from "@/components/common/KineticText";
+import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { InteractiveTiltCard } from "@/components/common/InteractiveTiltCard";
+import { MagneticButton } from "@/components/common/MagneticButton";
+import { InteractiveGlowBackground } from "@/components/common/InteractiveGlowBackground";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 interface ApplicationDetailGroup {
   title: string;
@@ -14,6 +17,8 @@ interface ApplicationDetailGroup {
 }
 
 interface ApplicationSectionData {
+  id: string;
+  shortTitle: string;
   title: string;
   subtitle: string;
   description: string;
@@ -24,6 +29,8 @@ interface ApplicationSectionData {
 
 const applicationSections: ApplicationSectionData[] = [
   {
+    id: "spray-dried-fruits-vegetables",
+    shortTitle: "Fruits & Vegetables",
     title: "Spray-Dried Fruits & Vegetables",
     subtitle: "Capturing Nature in a Convenient Powder Format",
     description:
@@ -40,6 +47,8 @@ const applicationSections: ApplicationSectionData[] = [
       "Our spray-dried ingredient range helps product developers explore different flavour profiles and formulation possibilities across multiple food categories.",
   },
   {
+    id: "spray-dried-dairy-products",
+    shortTitle: "Dairy Products",
     title: "Spray-Dried Dairy Products",
     subtitle: "Dairy Ingredients for Modern Food Formulations",
     description:
@@ -56,6 +65,8 @@ const applicationSections: ApplicationSectionData[] = [
       "Our dairy ingredient category supports manufacturers in exploring suitable formulations for a variety of food processing and product development needs.",
   },
   {
+    id: "spray-dried-fat-powder",
+    shortTitle: "Fat Powder",
     title: "Spray-Dried Fat Powder",
     subtitle: "Versatile Fat Ingredients for Innovative Food Applications",
     description:
@@ -189,6 +200,8 @@ const applicationSections: ApplicationSectionData[] = [
       "Spray-dried fat powder provides food manufacturers with a flexible ingredient option for developing products across a diverse range of food categories. At Aksharam Nutra Foods, we understand that selecting the right ingredient involves consideration of formulation objectives, technical specifications, processing conditions and end-consumer expectations.",
   },
   {
+    id: "dehydrated-fruits-vegetables",
+    shortTitle: "Dehydrated",
     title: "Dehydrated Fruits & Vegetables",
     subtitle: "Natural Ingredients for Everyday Food Innovation",
     description:
@@ -205,6 +218,8 @@ const applicationSections: ApplicationSectionData[] = [
       "Dehydrated ingredients help manufacturers develop practical food solutions while offering flexibility in product design and processing.",
   },
   {
+    id: "freeze-dried-fruits-vegetables",
+    shortTitle: "Freeze-Dried",
     title: "Freeze-Dried Fruits & Vegetables",
     subtitle: "Preserving the Character of Fruits and Vegetables",
     description:
@@ -221,6 +236,8 @@ const applicationSections: ApplicationSectionData[] = [
       "Freeze-dried ingredients offer product developers opportunities to create distinctive formulations where ingredient identity and sensory characteristics are key considerations.",
   },
   {
+    id: "herbal-extracts",
+    shortTitle: "Herbal Extracts",
     title: "Herbal Extracts",
     subtitle: "Botanical Ingredients for Diverse Applications",
     description:
@@ -238,92 +255,6 @@ const applicationSections: ApplicationSectionData[] = [
   },
 ];
 
-function ApplicationSection({ section, index }: { section: ApplicationSectionData; index: number }) {
-  return (
-    <section className={`border-t border-border/60 ${index % 2 === 0 ? "bg-white" : "bg-brand-bg"}`}>
-      <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 2xl:py-28">
-        <div className="max-w-4xl 2xl:max-w-5xl">
-          <div className="flex items-start gap-3 sm:gap-4">
-            <span className="inline-flex size-9 sm:size-11 shrink-0 items-center justify-center rounded-full bg-brand text-xs sm:text-sm font-bold text-brand-foreground shadow-xs">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold tracking-tight text-brand-ink">
-                {section.title}
-              </h2>
-              <p className="mt-1.5 sm:mt-2 text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-brand">{section.subtitle}</p>
-            </div>
-          </div>
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted">
-            {section.description}
-          </p>
-        </div>
-
-        <div className="mt-8 sm:mt-12">
-          <div className="flex items-center gap-4">
-            <h3 className="text-lg sm:text-xl font-bold text-brand-ink">Applications</h3>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          {section.detailGroups ? (
-            <div className="mt-5 grid gap-4 sm:gap-5 md:grid-cols-2">
-              {section.detailGroups.map((group, groupIndex) => (
-                <article
-                  key={group.title}
-                  className="rounded-xl border border-border/70 border-t-2 border-t-brand-accent bg-white p-4 sm:p-5 shadow-xs"
-                >
-                  <div className="flex gap-3">
-                    <span className="text-sm font-bold text-brand-accent">
-                      {String(groupIndex + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h4 className="text-sm sm:text-base font-bold text-brand-ink">{group.title}</h4>
-                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-brand-muted">{group.description}</p>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-brand">
-                    Applications include
-                  </p>
-                  <ul className="mt-2 space-y-1 text-xs sm:text-sm leading-relaxed text-brand-muted">
-                    {group.applications.map((application) => (
-                      <li key={application} className="flex gap-2">
-                        <span className="text-brand-accent">•</span>
-                        <span>{application}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 border-t border-border/70 pt-3 text-xs leading-relaxed text-brand-muted">
-                    {group.note}
-                  </p>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <ul className="mt-5 grid gap-3 sm:gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {section.applications.map((application) => {
-                const [label, detail] = application.split(": ");
-
-                return (
-                  <li
-                    key={application}
-                    className="rounded-xl border border-border/70 border-t-2 border-t-brand-accent bg-white p-4 sm:px-5 sm:py-4 text-xs sm:text-sm leading-relaxed text-brand-muted shadow-xs"
-                  >
-                    <strong className="font-semibold text-brand-ink">{label}:</strong>{" "}
-                    {detail}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-          <div className="mt-6 sm:mt-8 border-l-4 border-brand-accent bg-brand/5 p-4 sm:p-5 md:p-6 rounded-r-lg">
-            <p className="text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">{section.closing}</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  );
-}
-
 const applicationSectionsInOrder = [
   applicationSections[0],
   applicationSections[2],
@@ -331,76 +262,312 @@ const applicationSectionsInOrder = [
   ...applicationSections.slice(3),
 ];
 
+function ApplicationSectionItem({
+  section,
+  index,
+}: {
+  section: ApplicationSectionData;
+  index: number;
+}) {
+  return (
+    <section
+      id={section.id}
+      className={`relative overflow-hidden border-t border-border/60 transition-colors duration-500 ${
+        index % 2 === 0 ? "bg-white dark:bg-neutral-950" : "bg-brand-bg/60 dark:bg-neutral-900/60"
+      }`}
+    >
+      {/* Background ambient lighting orb */}
+      <div
+        className={`pointer-events-none absolute size-96 rounded-full blur-3xl -z-10 ${
+          index % 2 === 0
+            ? "top-1/3 -right-24 bg-brand/5"
+            : "top-1/3 -left-24 bg-brand-accent/10"
+        }`}
+      />
+
+      <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24 2xl:py-32">
+        {/* Header Block */}
+        <div className="max-w-4xl 2xl:max-w-5xl">
+          <div className="flex items-start gap-3.5 sm:gap-5">
+            <span className="inline-flex size-11 sm:size-14 shrink-0 items-center justify-center rounded-2xl bg-brand text-white font-mono text-sm sm:text-base font-extrabold shadow-md">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-extrabold tracking-tight text-brand-ink">
+                <KineticText text={section.title} as="span" stagger={30} delay={40} />
+              </h2>
+              <p className="mt-1.5 sm:mt-2 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-brand">
+                {section.subtitle}
+              </p>
+            </div>
+          </div>
+
+          <ScrollReveal animation="fade-up" delay={200} duration={700}>
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg 2xl:text-xl leading-relaxed text-brand-muted font-normal">
+              {section.description}
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* Applications Block */}
+        <div className="mt-10 sm:mt-14">
+          <div className="flex items-center gap-4 mb-6 sm:mb-8">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-brand-ink tracking-tight">
+              Applications
+            </h3>
+            <span className="h-px flex-1 bg-gradient-to-r from-border via-border/50 to-transparent" />
+          </div>
+
+          {section.detailGroups ? (
+            /* 8-Group Detailed Grid for Fat Powder */
+            <div className="grid gap-5 sm:gap-6 md:grid-cols-2 2xl:gap-8">
+              {section.detailGroups.map((group, groupIndex) => (
+                <ScrollReveal
+                  key={group.title}
+                  animation="fade-up"
+                  delay={100 + (groupIndex % 4) * 80}
+                  duration={700}
+                >
+                  <InteractiveTiltCard
+                    maxTilt={5}
+                    perspective={1100}
+                    className="group relative h-full flex flex-col justify-between rounded-3xl border border-black/8 dark:border-white/10 bg-white/95 dark:bg-neutral-900/90 p-5 sm:p-7 2xl:p-8 shadow-xs backdrop-blur-sm transition-all duration-300 hover:border-brand/40 hover:shadow-2xl"
+                  >
+                    <div>
+                      {/* Top Header */}
+                      <div className="flex items-start gap-3.5 mb-3">
+                        <span className="font-mono text-xs sm:text-sm font-bold text-brand bg-brand/10 border border-brand/20 px-2.5 py-1 rounded-full">
+                          {String(groupIndex + 1).padStart(2, "0")}
+                        </span>
+                        <h4 className="text-base sm:text-lg font-bold text-brand-ink transition-colors duration-300 group-hover:text-brand">
+                          {group.title}
+                        </h4>
+                      </div>
+
+                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-brand-muted font-normal">
+                        {group.description}
+                      </p>
+
+                      <div className="mt-5 pt-4 border-t border-border/60">
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand">
+                          Applications include
+                        </p>
+                        <ul className="mt-3 space-y-2 text-xs sm:text-sm leading-relaxed text-brand-muted">
+                          {group.applications.map((application) => (
+                            <li key={application} className="flex items-start gap-2">
+                              <span className="size-1.5 rounded-full bg-brand-accent mt-1.5 shrink-0" />
+                              <span>{application}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="mt-5 border-t border-border/60 pt-3.5 text-xs leading-relaxed text-brand-muted italic">
+                      {group.note}
+                    </div>
+                  </InteractiveTiltCard>
+                </ScrollReveal>
+              ))}
+            </div>
+          ) : (
+            /* Standard Grid for 6-item Sections */
+            <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-6">
+              {section.applications.map((application, appIndex) => {
+                const [label, detail] = application.split(": ");
+
+                return (
+                  <ScrollReveal
+                    key={application}
+                    animation="fade-up"
+                    delay={80 + appIndex * 60}
+                    duration={650}
+                  >
+                    <InteractiveTiltCard
+                      maxTilt={5}
+                      perspective={1100}
+                      className="group relative h-full rounded-2xl border border-black/8 dark:border-white/10 bg-white/95 dark:bg-neutral-900/90 p-5 sm:p-6 shadow-xs backdrop-blur-sm transition-all duration-300 hover:border-brand/40 hover:shadow-xl hover:-translate-y-0.5"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="size-2 rounded-full bg-brand-accent transition-transform duration-300 group-hover:scale-125" />
+                        <h4 className="text-sm sm:text-base font-bold text-brand-ink transition-colors duration-300 group-hover:text-brand">
+                          {label}
+                        </h4>
+                      </div>
+                      <p className="text-xs sm:text-sm text-brand-muted leading-relaxed font-normal">
+                        {detail}
+                      </p>
+                    </InteractiveTiltCard>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Section Closing Callout Box */}
+          <ScrollReveal animation="fade-up" delay={200} duration={700} className="mt-8 sm:mt-10">
+            <div className="relative overflow-hidden rounded-2xl border-l-4 border-brand-accent bg-gradient-to-r from-brand/10 via-brand/5 to-transparent p-5 sm:p-6 md:p-7 shadow-xs border border-black/5 dark:border-white/10">
+              <p className="text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted font-medium">
+                {section.closing}
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function ApplicationPage() {
   return (
     <>
+      {/* 1. Dynamic Hero Banner */}
       <HeroBanner
         title="Ingredient Applications"
         subtitle="Practical ingredient solutions for ambitious product development."
       />
-      <section className="bg-brand-bg">
-        <div className="mx-auto max-w-4xl 2xl:max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 text-center">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
-            Ingredient Applications
-          </p>
-          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
-            Versatile Ingredients. Endless Possibilities.
+
+      {/* 2. Interactive Intro Section */}
+      <section className="relative overflow-hidden bg-brand-bg transition-colors duration-500">
+        <InteractiveGlowBackground />
+
+        <div className="relative mx-auto max-w-4xl 2xl:max-w-5xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 text-center">
+          <ScrollReveal animation="fade-down" delay={50}>
+            <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 border border-brand/20 px-3.5 py-1 text-xs sm:text-sm font-semibold text-brand mb-3">
+              <Sparkles className="size-3.5 text-brand-accent" />
+              <span>Ingredient Applications</span>
+            </div>
+          </ScrollReveal>
+
+          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-ink">
+            <KineticText
+              text="Versatile Ingredients. Endless Possibilities."
+              as="span"
+              stagger={35}
+              delay={100}
+            />
           </h2>
-          <div className="mx-auto mt-5 sm:mt-7 max-w-3xl space-y-4 sm:space-y-5 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted">
-            <p>
-              At Aksharam Nutra Foods, we bring together a diverse range of fruit and vegetable
-              powders, freeze-dried ingredients, dairy powders and herbal extracts to support
-              innovation across the global food, beverage and nutrition industries.
-            </p>
-            <p>
-              From everyday food applications to specialised product formulations, our ingredients
-              offer manufacturers the flexibility to explore new textures, flavours, colours and
-              product concepts. We believe that the right ingredient can inspire better ideas,
-              simplify product development and create new opportunities in an evolving marketplace.
-            </p>
+
+          <div className="mx-auto mt-6 sm:mt-8 max-w-3xl space-y-4 sm:space-y-5 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted font-normal">
+            <ScrollReveal animation="fade-up" delay={250} duration={700}>
+              <p>
+                At Aksharam Nutra Foods, we bring together a diverse range of fruit and vegetable
+                powders, freeze-dried ingredients, dairy powders and herbal extracts to support
+                innovation across the global food, beverage and nutrition industries.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal animation="fade-up" delay={380} duration={700}>
+              <p>
+                From everyday food applications to specialised product formulations, our ingredients
+                offer manufacturers the flexibility to explore new textures, flavours, colours and
+                product concepts. We believe that the right ingredient can inspire better ideas,
+                simplify product development and create new opportunities in an evolving marketplace.
+              </p>
+            </ScrollReveal>
           </div>
+
+          {/* Quick-Jump Navigation Bar */}
+          <ScrollReveal animation="zoom-in" delay={450} className="mt-10 sm:mt-12">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              {applicationSectionsInOrder.map((section, idx) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-black/10 dark:border-white/10 bg-white/80 dark:bg-neutral-900/80 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-medium text-brand-ink shadow-xs backdrop-blur-md transition-all duration-300 hover:border-brand hover:bg-brand hover:text-white hover:scale-105 active:scale-95"
+                >
+                  <span className="font-mono text-[11px] opacity-70">0{idx + 1}</span>
+                  <span>{section.shortTitle}</span>
+                </a>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
+
+      {/* 3. Application Category Sections */}
       {applicationSectionsInOrder.map((section, index) => (
-        <ApplicationSection key={section.title} section={section} index={index} />
+        <ApplicationSectionItem key={section.title} section={section} index={index} />
       ))}
-      <section className="bg-brand px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 text-brand-foreground">
-        <div className="mx-auto grid max-w-7xl 2xl:max-w-[1600px] gap-8 md:gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+
+      {/* 4. Animated Closing CTA Section */}
+      <section className="relative overflow-hidden bg-brand px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-28 text-brand-foreground transition-colors duration-500">
+        {/* Ambient lighting in background */}
+        <div className="pointer-events-none absolute -top-32 -left-32 size-[450px] rounded-full bg-white/10 blur-3xl -z-10" />
+        <div className="pointer-events-none absolute -bottom-32 -right-32 size-[450px] rounded-full bg-brand-accent/20 blur-3xl -z-10" />
+
+        <div className="mx-auto grid max-w-7xl 2xl:max-w-[1600px] gap-10 md:gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="max-w-3xl">
-            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
-              Finding the Right Ingredient for Your Application
-            </p>
-            <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-              Let&apos;s Develop Your Next Product Together.
+            <ScrollReveal animation="fade-down">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-brand-accent">
+                Finding the Right Ingredient for Your Application
+              </span>
+            </ScrollReveal>
+
+            <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+              <KineticText
+                text="Let's Develop Your Next Product Together."
+                as="span"
+                stagger={35}
+                delay={50}
+              />
             </h2>
-            <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-brand-foreground/85">
-              <p>
-                Every formulation begins with a specific requirement. Whether you are creating a
-                fruit-based beverage, a convenient food mix, a dairy formulation or a botanical
-                ingredient blend, choosing the right ingredient is an important step towards
-                achieving your product goals.
-              </p>
-              <p>
-                Our team welcomes enquiries from food manufacturers, product developers, ingredient
-                distributors and nutrition brands seeking ingredient information and sourcing
-                opportunities.
-              </p>
-              <p>
-                Share your application, required specifications and target market with us. Let&apos;s
-                explore the possibilities together.
-              </p>
+
+            <div className="mt-5 sm:mt-6 space-y-3.5 sm:space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-brand-foreground/85 font-normal">
+              <ScrollReveal animation="fade-up" delay={200} duration={700}>
+                <p>
+                  Every formulation begins with a specific requirement. Whether you are creating a
+                  fruit-based beverage, a convenient food mix, a dairy formulation or a botanical
+                  ingredient blend, choosing the right ingredient is an important step towards
+                  achieving your product goals.
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal animation="fade-up" delay={320} duration={700}>
+                <p>
+                  Our team welcomes enquiries from food manufacturers, product developers, ingredient
+                  distributors and nutrition brands seeking ingredient information and sourcing
+                  opportunities.
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal animation="fade-up" delay={440} duration={700}>
+                <p>
+                  Share your application, required specifications and target market with us. Let&apos;s
+                  explore the possibilities together.
+                </p>
+              </ScrollReveal>
             </div>
           </div>
-          <div className="border-t border-brand-foreground/20 pt-6 sm:w-80 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-            <p className="text-base sm:text-lg font-semibold">Aksharam Nutra Foods</p>
-            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-brand-foreground/75">Ingredients That Inspire Innovation.</p>
-            <Link
-              href="/contact"
-              className="mt-5 sm:mt-6 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-ink transition hover:bg-brand-accent/85 shadow-sm"
+
+          {/* Aside Enquiry Card */}
+          <ScrollReveal animation="zoom-in" delay={250} duration={800}>
+            <InteractiveTiltCard
+              maxTilt={6}
+              perspective={1000}
+              className="rounded-3xl border border-white/20 bg-white/10 p-6 sm:p-8 backdrop-blur-md shadow-2xl sm:w-80 lg:w-96 text-center sm:text-left"
             >
-              Start an Enquiry
-            </Link>
-          </div>
+              <p className="text-lg sm:text-xl font-extrabold text-white">Aksharam Nutra Foods</p>
+              <p className="mt-2 text-xs sm:text-sm text-brand-foreground/80 font-normal">
+                Ingredients That Inspire Innovation.
+              </p>
+
+              <div className="mt-6">
+                <MagneticButton strength={0.25} className="w-full">
+                  <Link
+                    href="/contact"
+                    className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-brand-accent px-7 py-3.5 text-sm sm:text-base font-bold text-brand-ink shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white hover:text-brand hover:shadow-2xl active:scale-95"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <span>Start an Enquiry</span>
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                    <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+                  </Link>
+                </MagneticButton>
+              </div>
+            </InteractiveTiltCard>
+          </ScrollReveal>
         </div>
       </section>
     </>
