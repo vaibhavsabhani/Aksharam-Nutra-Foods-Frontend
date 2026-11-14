@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Header, Footer } from "@/components/layout";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -11,14 +10,17 @@ const inter = Inter({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aksharamnutrafoods.com"),
   title: {
     default: "Aksharam Nutra Foods Pvt. Ltd.",
     template: "%s - Aksharam Nutra Foods Pvt. Ltd.",
   },
-  description:
-    "Aksharam Nutra Foods Pvt Ltd is a leading manufacturer and supplier of spray dried fruit, vegetable, and fat powder products based in Surendranagar, Gujarat.",
   icons: { icon: "/favicon.png" },
 };
 
@@ -29,10 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col overflow-x-hidden text-brand-ink selection:bg-brand-accent selection:text-brand-ink">
         <Providers>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 w-full overflow-x-hidden">{children}</main>
           <Footer />
         </Providers>
       </body>

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HeroBanner } from "@/components/sections/HeroBanner";
+import { HeroBanner } from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "Application",
-  description:
-    "Explore versatile fruit, vegetable, dairy and herbal ingredients for food, beverage and nutrition applications.",
 };
 
 interface ApplicationDetailGroup {
@@ -243,49 +241,49 @@ const applicationSections: ApplicationSectionData[] = [
 function ApplicationSection({ section, index }: { section: ApplicationSectionData; index: number }) {
   return (
     <section className={`border-t border-border/60 ${index % 2 === 0 ? "bg-white" : "bg-brand-bg"}`}>
-      <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <div className="max-w-4xl">
-          <div className="flex items-start gap-4">
-            <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-brand-foreground">
+      <div className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 2xl:py-28">
+        <div className="max-w-4xl 2xl:max-w-5xl">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <span className="inline-flex size-9 sm:size-11 shrink-0 items-center justify-center rounded-full bg-brand text-xs sm:text-sm font-bold text-brand-foreground shadow-xs">
               {String(index + 1).padStart(2, "0")}
             </span>
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-brand-ink md:text-4xl">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold tracking-tight text-brand-ink">
                 {section.title}
               </h2>
-              <p className="mt-2 text-xl font-medium text-brand md:text-2xl">{section.subtitle}</p>
+              <p className="mt-1.5 sm:mt-2 text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-brand">{section.subtitle}</p>
             </div>
           </div>
-          <p className="mt-6 text-base leading-8 text-brand-muted md:text-lg">
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted">
             {section.description}
           </p>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-8 sm:mt-12">
           <div className="flex items-center gap-4">
-            <h3 className="text-xl font-bold text-brand-ink">Applications</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-brand-ink">Applications</h3>
             <span className="h-px flex-1 bg-border" />
           </div>
           {section.detailGroups ? (
-            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <div className="mt-5 grid gap-4 sm:gap-5 md:grid-cols-2">
               {section.detailGroups.map((group, groupIndex) => (
                 <article
                   key={group.title}
-                  className="rounded-md border border-border/70 border-t-2 border-t-brand-accent bg-white px-5 py-5 shadow-sm"
+                  className="rounded-xl border border-border/70 border-t-2 border-t-brand-accent bg-white p-4 sm:p-5 shadow-xs"
                 >
                   <div className="flex gap-3">
                     <span className="text-sm font-bold text-brand-accent">
                       {String(groupIndex + 1).padStart(2, "0")}
                     </span>
                     <div>
-                      <h4 className="font-bold text-brand-ink">{group.title}</h4>
-                      <p className="mt-2 text-sm leading-6 text-brand-muted">{group.description}</p>
+                      <h4 className="text-sm sm:text-base font-bold text-brand-ink">{group.title}</h4>
+                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-brand-muted">{group.description}</p>
                     </div>
                   </div>
                   <p className="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-brand">
                     Applications include
                   </p>
-                  <ul className="mt-2 space-y-1 text-sm leading-6 text-brand-muted">
+                  <ul className="mt-2 space-y-1 text-xs sm:text-sm leading-relaxed text-brand-muted">
                     {group.applications.map((application) => (
                       <li key={application} className="flex gap-2">
                         <span className="text-brand-accent">•</span>
@@ -293,21 +291,21 @@ function ApplicationSection({ section, index }: { section: ApplicationSectionDat
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-4 border-t border-border/70 pt-3 text-xs leading-5 text-brand-muted">
+                  <p className="mt-4 border-t border-border/70 pt-3 text-xs leading-relaxed text-brand-muted">
                     {group.note}
                   </p>
                 </article>
               ))}
             </div>
           ) : (
-            <ul className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <ul className="mt-5 grid gap-3 sm:gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {section.applications.map((application) => {
                 const [label, detail] = application.split(": ");
 
                 return (
                   <li
                     key={application}
-                    className="rounded-md border border-border/70 border-t-2 border-t-brand-accent bg-white px-5 py-4 text-sm leading-7 text-brand-muted shadow-sm"
+                    className="rounded-xl border border-border/70 border-t-2 border-t-brand-accent bg-white p-4 sm:px-5 sm:py-4 text-xs sm:text-sm leading-relaxed text-brand-muted shadow-xs"
                   >
                     <strong className="font-semibold text-brand-ink">{label}:</strong>{" "}
                     {detail}
@@ -316,8 +314,8 @@ function ApplicationSection({ section, index }: { section: ApplicationSectionDat
               })}
             </ul>
           )}
-          <div className="mt-8 border-l-4 border-brand-accent bg-brand/5 px-5 py-5 md:px-6">
-            <p className="text-sm leading-7 text-brand-muted md:text-base">{section.closing}</p>
+          <div className="mt-6 sm:mt-8 border-l-4 border-brand-accent bg-brand/5 p-4 sm:p-5 md:p-6 rounded-r-lg">
+            <p className="text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">{section.closing}</p>
           </div>
         </div>
 
@@ -341,14 +339,14 @@ export default function ApplicationPage() {
         subtitle="Practical ingredient solutions for ambitious product development."
       />
       <section className="bg-brand-bg">
-        <div className="mx-auto max-w-4xl px-4 py-16 text-center md:py-20">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
+        <div className="mx-auto max-w-4xl 2xl:max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 text-center">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
             Ingredient Applications
           </p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-brand-ink md:text-5xl">
+          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
             Versatile Ingredients. Endless Possibilities.
           </h2>
-          <div className="mx-auto mt-7 max-w-3xl space-y-5 text-base leading-8 text-brand-muted md:text-lg">
+          <div className="mx-auto mt-5 sm:mt-7 max-w-3xl space-y-4 sm:space-y-5 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted">
             <p>
               At Aksharam Nutra Foods, we bring together a diverse range of fruit and vegetable
               powders, freeze-dried ingredients, dairy powders and herbal extracts to support
@@ -366,16 +364,16 @@ export default function ApplicationPage() {
       {applicationSectionsInOrder.map((section, index) => (
         <ApplicationSection key={section.title} section={section} index={index} />
       ))}
-      <section className="bg-brand px-4 py-16 text-brand-foreground md:py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_auto] md:items-center">
+      <section className="bg-brand px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 text-brand-foreground">
+        <div className="mx-auto grid max-w-7xl 2xl:max-w-[1600px] gap-8 md:gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-accent">
               Finding the Right Ingredient for Your Application
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-5xl">
+            <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
               Let&apos;s Develop Your Next Product Together.
             </h2>
-            <div className="mt-6 space-y-4 text-base leading-8 text-brand-foreground/85 md:text-lg">
+            <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-brand-foreground/85">
               <p>
                 Every formulation begins with a specific requirement. Whether you are creating a
                 fruit-based beverage, a convenient food mix, a dairy formulation or a botanical
@@ -393,12 +391,12 @@ export default function ApplicationPage() {
               </p>
             </div>
           </div>
-          <div className="border-t border-brand-foreground/20 pt-6 md:w-64 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-            <p className="text-lg font-semibold">Aksharam Nutra Foods</p>
-            <p className="mt-2 text-sm text-brand-foreground/75">Ingredients That Inspire Innovation.</p>
+          <div className="border-t border-brand-foreground/20 pt-6 sm:w-80 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <p className="text-base sm:text-lg font-semibold">Aksharam Nutra Foods</p>
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-brand-foreground/75">Ingredients That Inspire Innovation.</p>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center justify-center rounded-md bg-brand-accent px-5 py-3 text-sm font-semibold text-brand-ink transition hover:bg-brand-accent/85"
+              className="mt-5 sm:mt-6 inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-brand-accent px-6 py-3 text-sm font-semibold text-brand-ink transition hover:bg-brand-accent/85 shadow-sm"
             >
               Start an Enquiry
             </Link>

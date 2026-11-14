@@ -1,17 +1,10 @@
-export type PublicBlogPost = {
-  id: number;
-  title: string;
-  content: string;
-  coverImageUrl: string | null;
-  isShow: boolean;
-  author: { name: string } | null;
-  createdAt: string;
-};
+import { API_URL } from "./api";
+import type { PublicBlogPost } from "@/types";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001/api";
+export type { PublicBlogPost };
 
 export async function getPublicBlogs(): Promise<PublicBlogPost[]> {
-  const response = await fetch(`${apiUrl}/blogs?onlyVisible=true`, {
+  const response = await fetch(`${API_URL}/blogs?onlyVisible=true`, {
     next: { revalidate: 60 },
   });
 
@@ -23,7 +16,7 @@ export async function getPublicBlogs(): Promise<PublicBlogPost[]> {
 }
 
 export async function getPublicBlog(id: string): Promise<PublicBlogPost> {
-  const response = await fetch(`${apiUrl}/blogs/${id}`, {
+  const response = await fetch(`${API_URL}/blogs/${id}`, {
     next: { revalidate: 60 },
   });
 

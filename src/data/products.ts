@@ -79,20 +79,6 @@ export const otherSprayDriedProducts: ProductItem[] = [
   { image: "/products/Other Spray Dried Products/spray-dried-amla-powder-321.jpg", title: "Spray Dried Amla Powder" },
 ];
 
-// Product grid shown on dehydrated-products-dealer-in-[city] pages
-export const dehydratedDealerProducts: ProductItem[] = [
-  { image: "/products/dehydrated/amchur.jpg", title: "Dry mango (Amchur) Powder" },
-  { image: "/products/dehydrated/potato.jpg", title: "Potato Flakes & Powder" },
-  { image: "/products/dehydrated/ginger-powder.jpg", title: "Ginger Powder" },
-  { image: "/products/dehydrated/dehydrated-garlic-flakes-500x500.webp", title: "Garlic Flakes & Powder" },
-  { image: "/products/dehydrated/onion-powder-500x500.webp", title: "Onion Flakes & Powder" },
-  { image: "/products/dehydrated/dehydrated-green-chilli-flakes-500x500.webp", title: "Green Chilly Flakes & Powder" },
-  { image: "/products/dehydrated/dried-beet-root-powder.png", title: "Beet root Powder" },
-  { image: "/products/dehydrated/dehydrated-tamarind-powder-.jpg", title: "Tamarind Powder" },
-  { image: "/products/dehydrated/Spinach-Leaves-1000x1000-1.png", title: "Spinach Powder" },
-];
-
-// Product grid shown on seasoning-masala(-dealer-in-[city]) pages
 export const seasoningMasalaProducts: ProductItem[] = [
   { image: "/products/seasoning-masala/pasta masala.png", title: "Pasta Masala" },
   { image: "/products/seasoning-masala/chatpata-masala.webp", title: "Chatpata Masala" },

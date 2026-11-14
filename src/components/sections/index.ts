@@ -1,0 +1,10 @@
+export { CategoryGrid } from "./CategoryGrid";
+export { CoreValuesCounters } from "./CoreValuesCounters";
+export { ExtraContentBlock } from "./ExtraContentBlock";
+export { Hero } from "./Hero";
+export { HeroBanner } from "./HeroBanner";
+export { ProductGrid } from "./ProductGrid";
+export { ProductIntro } from "./ProductIntro";
+export { RecentBlogGrid } from "./RecentBlogGrid";
+export { TestimonialCarousel } from "./TestimonialCarousel";
+export { WhyChooseUs } from "./WhyChooseUs";

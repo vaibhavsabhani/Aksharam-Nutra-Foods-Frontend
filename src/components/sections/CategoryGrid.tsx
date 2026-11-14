@@ -1,12 +1,7 @@
-import Link from "next/link";
+import { CategoryCard } from "@/components/common/CategoryCard";
+import type { CategoryItem } from "@/types";
 
-interface Category {
-  href: string;
-  image: string;
-  title: string;
-}
-
-const categories: Category[] = [
+const categories: CategoryItem[] = [
   { href: "/spray-dried", image: "/products/Spray Dried Fruit Powder/Mango.jpg", title: "Spray Dried" },
   { href: "/dehydrated-products", image: "/products/dehydrated/potato.jpg", title: "Dehydrated" },
   { href: "/freeze-dried", image: "/products/Spray Dried Fruit Powder/strawberry.jpg", title: "Freeze Dried" },
@@ -16,23 +11,13 @@ const categories: Category[] = [
 
 export function CategoryGrid() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <h2 className="mb-10 text-3xl font-bold text-brand-ink md:text-4xl">Our Categories</h2>
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
+    <section className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16 2xl:py-24">
+      <h2 className="mb-6 sm:mb-10 text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">
+        Our Categories
+      </h2>
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 sm:grid-cols-3 md:grid-cols-5 xl:gap-8">
         {categories.map((cat) => (
-          <Link key={cat.href} href={cat.href} className="group text-center">
-            <div className="overflow-hidden rounded-xl border bg-white">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={cat.image}
-                alt={cat.title}
-                className="aspect-square w-full object-cover transition group-hover:scale-105"
-              />
-            </div>
-            <h3 className="mt-3 text-sm font-semibold text-brand-ink group-hover:text-brand">
-              {cat.title}
-            </h3>
-          </Link>
+          <CategoryCard key={cat.href} category={cat} />
         ))}
       </div>
     </section>

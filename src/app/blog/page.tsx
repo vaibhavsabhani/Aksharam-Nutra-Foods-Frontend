@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { HeroBanner } from "@/components/sections/HeroBanner";
-import { PublicBlogList } from "@/components/blog/PublicBlogList";
+import { HeroBanner } from "@/components/sections";
+import { PublicBlogList } from "@/components/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description:
-    "Read our latest insights on spray-dried ingredients, sustainable sourcing, and herbal extracts.",
-  keywords: "blog, spray dried, herbal extracts, nutrition, Aksharam Nutra Foods",
 };
 
 export default function BlogPage() {
   return (
     <>
-      <HeroBanner title="Our Blog" />
+      <HeroBanner title="Our Blog" subtitle="Insights, trends, and innovation in the world of natural food ingredients." />
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8 py-10 sm:py-16 2xl:py-24">
         <PublicBlogList />
       </section>
     </>

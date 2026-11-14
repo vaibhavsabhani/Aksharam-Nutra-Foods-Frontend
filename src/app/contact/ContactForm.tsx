@@ -19,19 +19,23 @@ export function ContactForm() {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
-      <div className="mb-10 grid gap-6 sm:grid-cols-3">
-        <div className="flex items-start gap-3">
+    <div className="mx-auto max-w-4xl 2xl:max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16 2xl:py-24">
+      <div className="mb-8 sm:mb-12 grid gap-4 sm:gap-6 sm:grid-cols-3">
+        <div className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-brand-bg/60 shadow-xs">
           <MapPin className="mt-1 size-5 shrink-0 text-brand" />
-          <p className="text-sm text-brand-muted">{companyAddress}</p>
+          <p className="text-xs sm:text-sm leading-relaxed text-brand-muted">{companyAddress}</p>
         </div>
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-brand-bg/60 shadow-xs">
           <Mail className="mt-1 size-5 shrink-0 text-brand" />
-          <p className="text-sm text-brand-muted">{companyEmail}</p>
+          <a href={`mailto:${companyEmail}`} className="text-xs sm:text-sm text-brand-muted break-all sm:break-normal hover:text-brand transition">
+            {companyEmail}
+          </a>
         </div>
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-brand-bg/60 shadow-xs">
           <Phone className="mt-1 size-5 shrink-0 text-brand" />
-          <p className="text-sm text-brand-muted">{companyPhone}</p>
+          <a href={`tel:${companyPhone}`} className="text-xs sm:text-sm text-brand-muted hover:text-brand transition">
+            {companyPhone}
+          </a>
         </div>
       </div>
 

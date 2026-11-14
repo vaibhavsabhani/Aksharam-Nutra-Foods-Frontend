@@ -46,8 +46,8 @@ function NavLinkItem({
     <Link
       href={href}
       onClick={onClick}
-      className={`relative text-base font-medium text-brand-ink after:absolute after:-bottom-1 after:left-1 after:right-1 after:h-0.75 after:bg-brand-accent after:transition-all after:content-[''] ${
-        active ? "after:w-[calc(100%-8px)]" : "after:w-0 hover:after:w-[calc(100%-8px)]"
+      className={`relative text-sm xl:text-base font-medium text-brand-ink transition hover:text-brand after:absolute after:-bottom-1 after:left-1 after:right-1 after:h-0.75 after:bg-brand-accent after:transition-all after:content-[''] ${
+        active ? "after:w-[calc(100%-8px)] text-brand" : "after:w-0 hover:after:w-[calc(100%-8px)]"
       }`}
     >
       {children}
@@ -69,15 +69,19 @@ export function Header() {
   const otherProductLinks = productNavLinks.slice(1);
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-white py-2.5">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center">
+    <header className="sticky top-0 z-40 border-b bg-white/95 backdrop-blur-md py-2 sm:py-2.5 transition-all">
+      <div className="mx-auto flex max-w-7xl 2xl:max-w-[1600px] items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.png" alt="Aksharam Nutra Foods" className="h-20 w-auto" />
+          <img
+            src="/images/logo.png"
+            alt="Aksharam Nutra Foods"
+            className="h-12 sm:h-16 md:h-20 w-auto object-contain transition-all"
+          />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-7 md:flex">
+        {/* Desktop nav (visible on lg: 1024px+ for clean spacing across all resolutions) */}
+        <nav className="hidden items-center gap-4 xl:gap-7 lg:flex">
           <NavLinkItem href="/" active={isActive("/")}>
             Home
           </NavLinkItem>
@@ -88,18 +92,15 @@ export function Header() {
           <div className="nav-dropdown relative">
             <button
               type="button"
-              className={`flex items-center gap-1 text-base font-medium outline-none ${
+              className={`flex items-center gap-1 text-sm xl:text-base font-medium outline-none transition hover:text-brand ${
                 isProductsActive ? "text-brand" : "text-brand-ink"
               }`}
             >
               Our Products
               <ChevronDown className="size-3.5" />
             </button>
-            {/* pt-3 (not mt-3) keeps the gap inside the hoverable box, so moving
-                the pointer from the trigger down into the panel never crosses a
-                dead pixel that would drop the CSS :hover state. */}
             <div className="nav-dropdown-panel invisible absolute left-0 top-full w-56 pt-3 opacity-0 transition">
-              <ul className="rounded-lg bg-popover p-1 shadow ring-1 ring-foreground/10">
+              <ul className="rounded-lg bg-popover p-1 shadow-md ring-1 ring-foreground/10">
                 <li className="nav-submenu-item relative">
                   <div
                     tabIndex={0}
@@ -109,7 +110,7 @@ export function Header() {
                     <ChevronRight className="size-3.5" />
                   </div>
                   <div className="nav-submenu-flyout invisible absolute left-full top-0 w-64 pl-1 opacity-0 transition">
-                    <div className="w-60 rounded-lg bg-popover p-1 shadow ring-1 ring-foreground/10">
+                    <div className="w-60 rounded-lg bg-popover p-1 shadow-md ring-1 ring-foreground/10">
                       {sprayDried.children?.map((child) => (
                         <Link
                           key={child.href}
@@ -150,11 +151,11 @@ export function Header() {
           </NavLinkItem>
         </nav>
 
-        {/* Mobile trigger */}
+        {/* Mobile & Tablet trigger */}
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="lg:hidden text-brand-ink"
           aria-label="Toggle navigation"
           onClick={() => dispatch(setMobileMenuOpen(true))}
         >
@@ -162,11 +163,11 @@ export function Header() {
         </Button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile & Tablet menu drawer */}
       <Sheet open={mobileMenuOpen} onOpenChange={(open) => dispatch(setMobileMenuOpen(open))}>
-        <SheetContent side="right" className="w-72">
+        <SheetContent side="right" className="w-[85vw] max-w-sm overflow-y-auto p-0">
           <SheetTitle className="sr-only">Navigation</SheetTitle>
-          <nav className="mt-10 flex flex-col gap-1 px-4">
+          <nav className="flex flex-col gap-1 p-6 pt-12">
             <NavLinkItem href="/" active={isActive("/")} onClick={closeMobile}>
               <span className="block py-2">Home</span>
             </NavLinkItem>
