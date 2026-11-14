@@ -17,9 +17,9 @@ export function ContactForm() {
   const dispatch = useAppDispatch();
   const { values, status, error } = useAppSelector((state) => state.contactForm);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(submitContactForm(values));
+    await dispatch(submitContactForm(values));
   };
 
   return (
