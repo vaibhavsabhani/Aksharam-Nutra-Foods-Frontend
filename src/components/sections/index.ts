@@ -1,3 +1,4 @@
+export { AboutCompanyOverview } from "./AboutCompanyOverview";
 export { CategoryGrid } from "./CategoryGrid";
 export { CoreValuesCounters } from "./CoreValuesCounters";
 export { ExtraContentBlock } from "./ExtraContentBlock";

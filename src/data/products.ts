@@ -21,7 +21,7 @@ export const productNavLinks: NavLink[] = [
   { label: "Dehydrated", href: "/dehydrated-products" },
   { label: "Freeze Dried", href: "/freeze-dried" },
   { label: "Smoothies", href: "/smoothies" },
-  { label: "Indian Herbal Extract", href: "/indian-herbal-extract" },
+  { label: "Herbal Extracts", href: "/indian-herbal-extract" },
 ];
 
 export interface ProductItem {

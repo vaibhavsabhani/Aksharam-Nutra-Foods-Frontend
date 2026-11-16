@@ -74,7 +74,7 @@ export function Footer() {
                 <li><Link href="/dehydrated-products" className="transition hover:text-brand">Dehydrated</Link></li>
                 <li><Link href="/freeze-dried" className="transition hover:text-brand">Freeze Dried</Link></li>
                 <li><Link href="/smoothies" className="transition hover:text-brand">Smoothies</Link></li>
-                <li><Link href="/indian-herbal-extract" className="transition hover:text-brand">Indian Herbal Extract</Link></li>
+                <li><Link href="/indian-herbal-extract" className="transition hover:text-brand">Herbal Extracts</Link></li>
               </ul>
             </div>
           </div>
@@ -103,7 +103,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-2 border-t pt-6 text-xs sm:text-sm text-brand-muted md:flex-row md:items-center md:justify-between">
           <p>Copyright &copy; {year} Aksharam Nutra Foods. All Rights Reserved.</p>
-          <p>Ingredients That Inspire Innovation.</p>
+          <p>Design By Aksharam Group</p>
         </div>
       </div>
     </footer>

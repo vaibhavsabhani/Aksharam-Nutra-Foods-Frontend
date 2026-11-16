@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Leaf, Droplets, Zap } from "lucide-react";
-import { HeroBanner, CoreValuesCounters } from "@/components/sections";
+import { HeroBanner } from "@/components/sections";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { coreValuesLarge } from "@/data/constants";
 
 export const metadata: Metadata = {
   title: "Smoothies",
@@ -136,37 +135,25 @@ export default function SmoothiesPage() {
       </section>
 
       <section className="bg-brand-bg py-10 sm:py-16 2xl:py-24">
-        <div className="mx-auto grid max-w-7xl 2xl:max-w-[1600px] items-center gap-8 sm:gap-10 px-4 sm:px-6 lg:px-8 md:grid-cols-2 lg:gap-14 2xl:gap-20">
-          <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">Perfect Preparation</h2>
-            <p className="mt-3 sm:mt-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl 2xl:text-5xl font-bold text-brand-ink tracking-tight">Perfect Preparation</h2>
+          <p className="mt-3 sm:mt-4 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed text-brand-muted">
               Enjoying our smoothies is as easy as 1-2-3. No blender? No problem! Our powders are
               designed for instant solubility.
-            </p>
-            <div className="space-y-4 sm:space-y-6">
-              {prepSteps.map((step) => (
-                <div key={step.step} className="relative border-l-2 border-brand pl-6 sm:pl-8">
-                  <span className="absolute -left-[15px] sm:-left-[17px] flex size-7 sm:size-8 items-center justify-center rounded-full bg-brand text-xs sm:text-sm font-bold text-brand-foreground shadow-xs">
-                    {step.step}
-                  </span>
-                  <h5 className="text-sm sm:text-base font-bold text-brand-ink">{step.title}</h5>
-                  <p className="mt-1 text-xs sm:text-sm text-brand-muted leading-relaxed">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/abt.jpg"
-              alt="Preparation"
-              className="w-full max-h-[350px] sm:max-h-[450px] 2xl:max-h-[600px] rounded-2xl object-cover shadow-sm"
-            />
+          </p>
+          <div className="space-y-4 text-left sm:space-y-6">
+            {prepSteps.map((step) => (
+              <div key={step.step} className="relative border-l-2 border-brand pl-6 sm:pl-8">
+                <span className="absolute -left-[15px] sm:-left-[17px] flex size-7 sm:size-8 items-center justify-center rounded-full bg-brand text-xs sm:text-sm font-bold text-brand-foreground shadow-xs">
+                  {step.step}
+                </span>
+                <h5 className="text-sm sm:text-base font-bold text-brand-ink">{step.title}</h5>
+                <p className="mt-1 text-xs sm:text-sm text-brand-muted leading-relaxed">{step.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-
-      <CoreValuesCounters values={coreValuesLarge} />
     </>
   );
 }

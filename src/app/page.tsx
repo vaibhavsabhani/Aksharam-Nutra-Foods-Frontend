@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Hero
-        title="Spray Dried Fruit & Vegetable Manufacturer & Supplier"
+        title="Spray-Dried Fruit & Vegetable Powders | Herbal Extracts – Manufacturer & Supplier"
         highlight="Pure as it gets"
         description="Ingredients used as our raw materials are 100% authentic and hence our product preserves ultimate natural taste as original when packed and shipped."
         image="/images/couch.png"

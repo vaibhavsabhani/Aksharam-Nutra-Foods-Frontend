@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeroBanner } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: "Indian Herbal Extract",
+  title: "Herbal Extracts",
 };
 
 interface ExtractRow {
@@ -143,7 +143,7 @@ export default function IndianHerbalExtractPage() {
   return (
     <>
       <HeroBanner
-        title="Indian Herbal Extract"
+        title="Herbal Extracts"
         subtitle="Premium quality extracts sourced from the finest Indian herbs."
       />
 

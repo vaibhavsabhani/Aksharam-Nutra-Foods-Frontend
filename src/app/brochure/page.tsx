@@ -20,7 +20,7 @@ const brochures: Brochure[] = [
   {
     title: "Spray Dried Products",
     description: "Complete range of Fruit, Vegetable & Fat powders.",
-    href: "/images/01.ANFPL Spray Dried Product Kist.pdf",
+    href: "/images/01.ANFPL Spray Dried Product list.pdf",
   },
   {
     title: "Dehydrated Products",
@@ -33,9 +33,9 @@ const brochures: Brochure[] = [
     href: "/images/03.ANFPL Freeze Dried Product List.pdf",
   },
   {
-    title: "Indian Herbal Extracts",
+    title: "Herbal Extracts",
     description: "Premium Indian herbal extracts for nutraceutical and wellness applications.",
-    href: "/images/04 INDIAN HERBAL EXTRACTS.pdf",
+    href: "/images/04.HERBAL EXTRACTS.pdf",
   },
 ];
 

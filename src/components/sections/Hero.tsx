@@ -29,7 +29,7 @@ export function Hero({ title, highlight, description, image }: HeroProps) {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-extrabold leading-[1.12] text-black tracking-tight">
             <KineticText text={title} as="span" stagger={30} delay={50} />
             {highlight ? (
-              <span className="mt-2 block bg-gradient-to-r from-brand via-[#53826e] to-brand bg-clip-text text-transparent">
+              <span className="mt-2 block bg-gradient-to-r from-brand via-[#53826e] to-brand bg-clip-text text-black">
                 <KineticText text={highlight} as="span" stagger={40} delay={300} />
               </span>
             ) : null}

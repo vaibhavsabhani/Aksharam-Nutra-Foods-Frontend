@@ -10,7 +10,7 @@ const categories: CategoryItem[] = [
   { href: "/dehydrated-products", image: "/products/dehydrated/potato.jpg", title: "Dehydrated" },
   { href: "/freeze-dried", image: "/products/Spray Dried Fruit Powder/strawberry.jpg", title: "Freeze Dried" },
   { href: "/smoothies", image: "/images/Mango Smoothies.png", title: "Smoothies" },
-  { href: "/indian-herbal-extract", image: "/products/Spray Dried Fruit Powder/amla.png", title: "Indian Herbal Extract" },
+  { href: "/indian-herbal-extract", image: "/products/Spray Dried Fruit Powder/amla.png", title: "Herbal Extracts" },
 ];
 
 export function CategoryGrid() {
