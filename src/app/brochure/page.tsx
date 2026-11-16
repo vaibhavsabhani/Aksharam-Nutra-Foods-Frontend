@@ -34,7 +34,7 @@ const brochures: Brochure[] = [
   },
   {
     title: "Herbal Extracts",
-    description: "Premium Indian herbal extracts for nutraceutical and wellness applications.",
+    description: "Premium herbal extracts for nutraceutical and wellness applications.",
     href: "/images/04.HERBAL EXTRACTS.pdf",
   },
 ];
