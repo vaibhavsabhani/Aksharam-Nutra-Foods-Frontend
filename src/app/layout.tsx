@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "Aksharam Nutra Foods Pvt. Ltd.",
     template: "%s - Aksharam Nutra Foods Pvt. Ltd.",
   },
-  icons: { icon: "/favicon.png" },
+  icons: { icon: "/favi.svg" },
 };
 
 export default function RootLayout({
